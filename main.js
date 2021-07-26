@@ -10,42 +10,76 @@
      content = event.results[0][0].transcript;
      document.getElementById("textbox").innerHTML = content;
      console.log(content);
-     if(content == "take my selfie"){
-         console.log("taking selfie");
-         speak();
+     if(content == "Friday open Google"){
+         console.log("open Google");
+         window.open("//www.google.com/");
+         google();
+         start();
      }
+
+     if(content == "Friday open YouTube"){
+        console.log("open youtube");
+        window.open("//www.youtube.com/");
+        youtube();
+        start();
+    }
+
+    if(content == "Friday open Facebook"){
+        console.log("open Facebook");
+        window.open("//www.facebook.com/");
+        Facebook();
+        start();
+    }
+
+    if(content == "Friday open Twitter"){
+        console.log("open Twitter");
+        window.open("//twitter.com/?lang=en");
+        Twitter();
+        start();
+    }
+
+    if(content == "hi Friday"){
+        console.log("hi");
+        Hi();
+        start();
+    }
  }
 
- function speak(){
+ function google(){
      synth = window.speechSynthesis;
-     speak_data = "taking your selfie in 5 seconds";
+     speak_data = "Opening Google sir";
      utterThis = new SpeechSynthesisUtterance(speak_data);
      synth.speak(utterThis);
-     Webcam.attach(camera);
-
-     setTimeout(function(){
-         take_snapshot();
-         save();
-     },5000);
+     start();
  }
 
- camera = document.getElementById("camera");
- Webcam.set({
-     width:360,
-     height:300,
-     image_format:'png',
-     png_quality:90
- });
+ function youtube(){
+    synth = window.speechSynthesis;
+    speak_data = "Opening Youtube sir";
+    utterThis = new SpeechSynthesisUtterance(speak_data);
+    synth.speak(utterThis);
+    start();
+}
 
- function take_snapshot(){
-     Webcam.snap(function(data_uri){
-        document.getElementById("result").innerHTML = '<img id="selfie_image" src="'+data_uri+'"/>';
-     });
- }
+function Facebook(){
+    synth = window.speechSynthesis;
+    speak_data = "Opening facebook sir";
+    utterThis = new SpeechSynthesisUtterance(speak_data);
+    synth.speak(utterThis);
+    start();
+}
 
-function save(){
-    link = document.getElementById("link");
-    img = document.getElementById("selfie_image").src;
-    link.href = img;
-    link.click();
+function Twitter(){
+    synth = window.speechSynthesis;
+    speak_data = "Opening Twitter sir";
+    utterThis = new SpeechSynthesisUtterance(speak_data);
+    synth.speak(utterThis);
+    start();
+}
+
+function Hi(){
+    synth = window.speechSynthesis;
+    speak_data = "Hi  I  am  Friday  I  can  make  your  life  easy.";
+    utterThis = new SpeechSynthesisUtterance(speak_data);
+    synth.speak(utterThis);
 }
